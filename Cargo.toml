@@ -43,6 +43,7 @@ sparc = []
 sparc64 = []
 x86 = []
 x86_64 = []
+tee = []
 
 # Deprecated: Use `serde` instead.
 with-serde = ["serde", "serde_repr"]
