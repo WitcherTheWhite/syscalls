@@ -32,6 +32,8 @@ pub mod sparc64;
 pub mod x86;
 #[cfg(any(target_arch = "x86_64", feature = "x86_64"))]
 pub mod x86_64;
+#[cfg(all(any(target_arch = "x86_64", feature = "x86_64"), feature = "tee"))]
+pub mod x86_64_tee;
 
 #[cfg(all(target_arch = "aarch64", feature = "tee"))]
 pub use aarch64_tee::*;
@@ -75,5 +77,8 @@ pub use sparc64::*;
 #[cfg(target_arch = "x86")]
 pub use x86::*;
 
-#[cfg(target_arch = "x86_64")]
+#[cfg(all(target_arch = "x86_64", feature = "tee"))]
+pub use x86_64_tee::*;
+
+#[cfg(all(target_arch = "x86_64", not(feature = "tee")))]
 pub use x86_64::*;
